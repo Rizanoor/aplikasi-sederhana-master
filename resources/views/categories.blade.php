@@ -4,14 +4,26 @@
 @section('container')
   <h1 class="mb-5">Halaman Post Categories</h1>
 
-  @foreach ($categories as $category)
-      <ul>
-        <li>
-          <h3><a href="/categories/{{ $category->slug }}">{{ $category->name }} </a></h3>
+  <div class="container">
+    <div class="row">
 
-        </li>
-      </ul>
-  @endforeach
+      @foreach ($categories as $category)
+        <div class="col-md-4">
+          <a href="/categories/{{ $category->slug }}">
+            <div class="card text-white" style="border-radius: 20px">
+              <img src="https://source.unsplash.com/500x500?{{ $category->name }}" class="card-img-top" style="border-radius: 20px" alt="{{ $category->name }}">              
+              <div class="card-img-overlay d-flex align-items-center p-0 fs-3">
+                  <h5 class="card-title text-center flex-fill p-4" 
+                  style="background-color: rgba(0, 0, 0, 0.7); border-radius: 20px 0px 20px 0px">{{ $category->name }}</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+      @endforeach
+    </div>
+  </div>
+      
 
+  
 @endsection
   

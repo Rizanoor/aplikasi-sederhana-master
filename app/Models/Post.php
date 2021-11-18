@@ -11,6 +11,7 @@ class Post extends Model
 
     // protected $fillabel = ['title', 'excerpt', 'body'];
     protected $guarded = ['id'];
+    protected $with = ['author', 'category'];
 
     public function category()
     {
