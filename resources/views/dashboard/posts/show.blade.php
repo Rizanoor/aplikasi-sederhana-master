@@ -15,8 +15,6 @@
           {!! $post->body !!}
         </article>
     
-        <br>
-        <a href="/posts" class="btn btn-primary mt-3">Back to Blog</a>
     </div>
   </div>
 </div>

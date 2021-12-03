@@ -7,6 +7,7 @@ use App\Models\Category;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Str;
 
 
 use function GuzzleHttp\Promise\all;
@@ -45,7 +46,19 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:posts',
+            'category_id' => 'required',
+            'body' => 'required'
+        ]);
+
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+
+        Post::create($validatedData);
+
+        return redirect('/dashboard/posts')->with('success', 'New Post Has Been Added!!');
     }
 
     /**
