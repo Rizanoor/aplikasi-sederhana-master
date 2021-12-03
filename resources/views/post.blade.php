@@ -13,7 +13,13 @@
           {{ $post->category->name }}</a>
         </p>
     
-        <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" alt="{{ $post->category->name }}" class="img-fluid" style="border-radius: 20px">
+        @if ($post->image)
+          <div style="max-height: 250px; overflow:hidden;">
+            <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" class="img-fluid" style="border-radius: 20px">
+          </div>
+        @else
+          <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}" alt="{{ $post->category->name }}" class="img-fluid" style="border-radius: 20px">
+        @endif
 
         <article class="my-3 fs-5">
           {!! $post->body !!}
