@@ -69,3 +69,6 @@ sluggable (https://github.com/cviebrock/eloquent-sluggable)
 
 Fetch API (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
+## OUTPUT
+Blog sederhana menggunakan laravel 8 CRUD (https://youtu.be/qcNHfpnAb9M)
+
