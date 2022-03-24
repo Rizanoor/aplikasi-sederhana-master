@@ -17,6 +17,7 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
+        // mengembalikan view halaman utama admin category dengan mengambil semua Category pada model category 
         return view('dashboard.categories.index', [
             'categories' => Category::all()
         ]);
@@ -29,6 +30,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
+        // mengembalikan view halaman create category admin 
         return view('dashboard.categories.create', [
             'categories' => Category::all()
         ]);
@@ -42,6 +44,7 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // menyimpan data yang sebelumnya di validasi dahulu agar tidak terjadi kesamaan data
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'slug' => 'required|unique:posts'
@@ -62,9 +65,7 @@ class AdminCategoryController extends Controller
      */
     public function show(Category $category)
     {
-        // return view('dashboard.categories.show', [
-        //     'Category' => $category
-        // ]);
+        //
     }
 
     /**
@@ -96,11 +97,11 @@ class AdminCategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category, $id)
     {
-        // Category::destroy($category->id);
-        // return redirect('/dashboard/categories')->with('success', 'Category Has Been Deleted!!');
-        return 'ini halaman delete';
+
+        Post::destroy($category->id);
+        return redirect('/dashboard/categories')->with('success', 'Post Has Been Deleted!!');
     }
 
     public function checkSlug(Request $request)

@@ -3,6 +3,7 @@
 @section('container')
   <div class="row justify-content-center">
     <div class="col-lg-5">
+      {{-- jika session berhasil masuk maka tampilkan alert success --}}
       @if (session()->has('success'))
           <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{  session('success') }} 
@@ -10,6 +11,7 @@
           </div>
         @endif
 
+        {{-- jika session gagal masuk maka tampilkan alert danger --}}
         @if (session()->has('loginError'))
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{  session('loginError') }} 
@@ -22,8 +24,11 @@
         <form action="/login" method="post">
           @csrf
           <div class="form-floating">
-            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
+            {{-- kalau gagal akan tampil error, tapi email yang tadi di tulis tidak tereset--}}
+            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required 
+            value="{{ old('email') }}">
             <label for="email">Email address</label>
+            {{-- kalau gagal akan tampil messages error --}}
               @error('email')
                   <div class="invalid-feedback">
                     {{ $message }}

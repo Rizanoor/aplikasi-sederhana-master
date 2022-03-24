@@ -28,14 +28,14 @@ use GuzzleHttp\Middleware;
 Route::get('/', function () {
     return view('home', [
         "title" => "Home",
-        'active' => 'home'
+        'active' => 'home' //tidak di pakai karena sudah ada request active di sidebar
     ]);
 });
 
 Route::get('/about', function () {
     return view('about', [
         "title" => "About",
-        'active' => 'about',
+        'active' => 'about', //tidak di pakai karena sudah ada request active di sidebar
         "name" => "Rizanoorfauzan",
         "email" => "Rizanoorfauzan1@gmail.com",
         "image" => "icons-testimonial-1.png"
@@ -49,23 +49,28 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show']);
 Route::get('/categories', function () {
     return view('categories', [
         'title' => 'Post Categories',
-        'active' => 'categories',
+        'active' => 'categories', //tidak di pakai karena sudah ada request active di sidebar
         'categories' => Category::all()
     ]);
 });
 
+// hanya boleh di akses halaman login hanya guest
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
+// hanya boleh di akses halaman register hanya guest
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::Post('/register', [RegisterController::class, 'store']);
 
+// hanya boleh di akses ketika orang sudah login
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
 
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+
+// dashboard yang hanya bisa di akses oleh auth
 Route::resource('/dashboard/posts', DashboardPostController::class)
     ->middleware('auth');
 

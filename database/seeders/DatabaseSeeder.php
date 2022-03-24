@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+
+// bikin seeder untuk 3 buah table untuk memanggil modelnya
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Post;
@@ -17,21 +19,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // membuat seeder untuk model User
         User::create([
             'name' => 'Rizanoorfauzan',
             'username' => 'Riza',
             'email' => 'riza@gmail.com',
-            'password' => bcrypt('1212121212')
+            'password' => bcrypt('1212121212') //angka acak yang akan tampil di table user kolom password
         ]);
 
-        // User::create([
-        //     'name' => 'Alqis',
-        //     'email' => 'alqis@gmail.com',
-        //     'password' => bcrypt('1212')
-        // ]);
-
+        // membuat seeder user sebanyak 3 secara random untuk model User 
         User::factory(3)->create();
 
+        // membuat seeder category untuk model Category
         Category::create([
             'name' => 'Web Programing',
             'slug' => 'web-programing',
@@ -48,43 +47,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-
+        // membuat seeder post sebanyak 20 untuk model Post
         Post::factory(20)->create();
-
-        // Post::create([
-        //     'title' => 'Judul Pertama',
-        //     'slug' => 'judul-pertama',
-        //     'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, maiores',
-        //     'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ducimus quod quaerat assumenda nisi beatae culpa placeat sunt aspernatur veritatis soluta doloribus odit commodi nulla quo quam quos perspiciatis accusantium minus? Tempora voluptatum error facilis, similique sed illum optio!',
-        //     'category_id' => 1,
-        //     'user_id' => 1
-        // ]);
-
-        // Post::create([
-        //     'title' => 'Judul Kedua',
-        //     'slug' => 'judul-kedua',
-        //     'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, maiores',
-        //     'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ducimus quod quaerat assumenda nisi beatae culpa placeat sunt aspernatur veritatis soluta doloribus odit commodi nulla quo quam quos perspiciatis accusantium minus? Tempora voluptatum error facilis, similique sed illum optio!',
-        //     'category_id' => 1,
-        //     'user_id' => 1
-        // ]);
-
-        // Post::create([
-        //     'title' => 'Judul Ketiga',
-        //     'slug' => 'judul-ketiga',
-        //     'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, maiores',
-        //     'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ducimus quod quaerat assumenda nisi beatae culpa placeat sunt aspernatur veritatis soluta doloribus odit commodi nulla quo quam quos perspiciatis accusantium minus? Tempora voluptatum error facilis, similique sed illum optio!',
-        //     'category_id' => 2,
-        //     'user_id' => 1
-        // ]);
-
-        // Post::create([
-        //     'title' => 'Judul Keempat',
-        //     'slug' => 'judul-keempat',
-        //     'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, maiores',
-        //     'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ducimus quod quaerat assumenda nisi beatae culpa placeat sunt aspernatur veritatis soluta doloribus odit commodi nulla quo quam quos perspiciatis accusantium minus? Tempora voluptatum error facilis, similique sed illum optio!',
-        //     'category_id' => 2,
-        //     'user_id' => 2
-        // ]);
     }
 }

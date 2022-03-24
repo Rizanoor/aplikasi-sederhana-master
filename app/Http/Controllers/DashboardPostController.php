@@ -22,7 +22,9 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
+        // menampilkan halaman dashboard post index
         return  view('/dashboard.posts.index', [
+            // menampilkan post berdasarkan user_id yang sedang login
             'posts' =>  Post::where('user_id', auth()->user()->id)->get()
         ]);
     }
@@ -76,6 +78,7 @@ class DashboardPostController extends Controller
      */
     public function show(Post $post)
     {
+        // mengembalikan view  yang di dalamnya mengirimkan data post yang ngambil dari $post
         return view('dashboard.posts.show', [
             'post' => $post
         ]);

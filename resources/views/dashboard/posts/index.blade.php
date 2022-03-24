@@ -23,7 +23,8 @@
     <tbody>
       @foreach ($posts as $post)  
         <tr>
-          <td>{{ $loop->iteration }}</td>
+          {{-- membuat angka secara otomatis --}}
+          <td>{{ $loop->iteration }}</td> 
           <td>{{ $post->title }}</td>
           <td>{{ $post->category->name }}</td>
           <td>

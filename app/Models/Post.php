@@ -53,11 +53,14 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    // setipa route otomatis mencarinya slug 
     public function getRouteKeyName()
     {
         return 'slug';
     }
 
+    // method dari library sluggable
+    // https://github.com/cviebrock/eloquent-sluggable
     public function sluggable(): array
     {
         return [

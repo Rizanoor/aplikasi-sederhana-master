@@ -13,6 +13,7 @@ class AddIsAdminToUsersTable extends Migration
      */
     public function up()
     {
+        // membuat role pada table user 
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('is_admin')->default(false);
         });

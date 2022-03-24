@@ -24,6 +24,7 @@ class User extends Authenticatable
     //     'password',
     // ];
 
+    // mengabaikan kolom id pada table user
     protected $guarded = ['id'];
 
     /**
@@ -47,6 +48,8 @@ class User extends Authenticatable
 
     public function posts()
     {
+        // table user berelasi dengan tabel Post
+        // karena satu user bisa memiliki banyak post
         return $this->hasMany(Post::class);
     }
 }

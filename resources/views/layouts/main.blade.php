@@ -14,12 +14,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     {{-- My style --}}
     <link rel="stylesheet" href="/css/style.css">
-    {{-- <style>
-      body{
-        font-family: 'Poppins', sans-serif;
-      }
+    
+    @stack('before-style')
 
-    </style> --}}
+    @stack('after-style')
     <title>Blog | {{ $title }}</title>
   </head>
   <body>
